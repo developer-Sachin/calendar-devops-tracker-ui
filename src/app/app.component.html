@@ -1,0 +1,79 @@
+<nav class="navbar navb navbar-dark bg-dark fixed-top">
+  <div>
+    <i class="fa fa-cogs text-white"></i> &nbsp;
+    <div class="navbar-brand">DevOps Calendar</div>&nbsp;
+    <button class="btn border-white text-white" routerLink="/home/calendar">Calendar</button> &nbsp;
+    <button class="btn border-white text-white" routerLink="view-users">View Users</button> &nbsp;
+    <button class="btn border-white text-white" (click)="open(cnt)">Add User</button> &nbsp;
+
+  </div>
+</nav>
+<br>
+
+<simple-notifications [options]="{position: ['bottom', 'right']}"></simple-notifications>
+
+<router-outlet></router-outlet>
+
+
+<ng-template #cnt let-modal>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">User Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="userName" class="text-muted">User Name</label>
+        <div>
+          <input
+            id="userName"
+            class="form-control"
+            name="userName"
+            [(ngModel)]="userName" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firstName" class="text-muted">First Name</label>
+        <div>
+          <input
+            id="firstName"
+            class="form-control"
+            name="primary"
+            [(ngModel)]="firstName" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="text-muted">Last Name</label>
+        <div class="input-group">
+          <input
+            id="lastName"
+            class="form-control"
+            name="lastName"
+            [(ngModel)]="lastName"
+            autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="emailId" class="text-muted">Email Id</label>
+        <div class="input-group">
+          <input
+            id="emailId"
+            type="text"
+            class="form-control"
+            name="emailId"
+            [(ngModel)]="emailId"
+            autocomplete="off">
+        </div>
+      </div>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+

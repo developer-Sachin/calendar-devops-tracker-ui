@@ -1,0 +1,118 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Sun</th>
+    <th scope="col">Mon</th>
+    <th scope="col">Tue</th>
+    <th scope="col">Wed</th>
+    <th scope="col">Thu</th>
+    <th scope="col">Fri</th>
+    <th scope="col">Sat</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let r of monthlyDevopsData">
+    <td *ngFor="let val of r" (click)="open(cnt,val)">
+      <span [ngClass]="val.outOfMonthRange ? 't1-dormant': 't1-active'">{{val.calendarDateNumber}}</span>
+      <span class="t2">{{val?.devopsData?.primaryDevops}}</span>
+      <br><span class="t3">{{val?.devopsData?.secondaryDevops}}</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ng-template #cnt let-modal>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Devops Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <div class="form-group">
+        *<label for="primary" class="text-muted">Primary Devops Responsible</label>
+        <div class="input-group">
+          <input
+            id="primary"
+            class="form-control"
+            name="primary"
+            [(ngModel)]="primary">
+        </div>
+        <ng-select class="custom" placeholder="search"></ng-select>
+      </div>
+      <div class="form-group">
+        <label for="primary" class="text-muted">Primary Email</label>
+        <div class="input-group">
+          <input
+            id="primaryEmail"
+            class="form-control"
+            name="primaryEmail"
+            [(ngModel)]="primaryEmail" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="primaryEffort" class="text-muted">Primary Effort</label>
+        <div class="input-group">
+          <input
+            id="primaryEffort"
+            type="number"
+            class="form-control"
+            name="primaryEffort"
+            [(ngModel)]="primaryEffort" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="secondary" class="text-muted">Secondary Devops Responsible</label>
+        <div class="input-group">
+          <input
+            id="secondary"
+            class="form-control"
+            name="secondary"
+            [(ngModel)]="secondary" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="secondaryEmail" class="text-muted">Secondary mail ID</label>
+        <div class="input-group">
+          <input
+            id="secondaryEmail"
+            type="email"
+            class="form-control"
+            name="secondaryEmail"
+            [(ngModel)]="secondaryEmail" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="secondaryEffort" class="text-muted">Secondary Effort</label>
+        <div class="input-group">
+          <input
+            id="secondaryEffort"
+            type="number"
+            class="form-control"
+            name="secondaryEffort"
+            [(ngModel)]="secondaryEffort" autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comments" class="text-muted">Comments</label>
+        <div class="input-group">
+          <textarea
+            id="comments"
+            class="form-control"
+            name="comments"
+            [(ngModel)]="comments" rows="5" cols="50"
+          ></textarea>
+        </div>
+      </div>
+      <span class="text-muted">Last Modification : w7eecr6 | 20-04-2021</span>
+      <br>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        <a (click)="modal.dismiss('delete')"><i class="fa fa-trash alert-link" style="cursor:pointer;"></i></a>
+      </div>
+    </form>
+  </div>
+</ng-template>

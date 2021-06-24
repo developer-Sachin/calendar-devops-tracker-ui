@@ -1,0 +1,42 @@
+<div class="d-flex flex-row">
+  <div class="icon-search">
+    <i class="fa fa-id-card"></i>
+  </div>
+  <div class="d-flex flex-fill p-2">
+    <ng-select
+      class="cust-style"
+      [closeOnSelect]="true"
+      [clearOnBackspace]="true"
+      [hideSelected]="true"
+      [items]="loadedUsers"
+      [loading]="loading"
+      [placeholder]="'Search User Here'"
+      [(ngModel)]="selectedUser"
+      [virtualScroll]="true"
+      (scroll)="onScroll($event)"
+      (scrollToEnd)="onScrollToEnd()"
+      [typeahead]="searchResponse"
+      class="custom"
+      (change)="onChange($event)">
+      <ng-template ng-label-tmp let-item="item">
+        {{item.userName.toLowerCase()}}
+      </ng-template>
+      <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+        <span [innerHTML]="createOptionText(item)"></span>
+      </ng-template>
+      <ng-template ng-tag-tmp let-search="searchTerm">
+        <div *ngIf="loadedUsers.length == 0">
+          <b>{{ 'i18n.user-search.add'}}:</b> {{search}}
+          <div *ngIf="!isValidUserName(search)">
+            <small class="invalid">{{ 'i18n.user-search.constraints'}}</small>
+          </div>
+        </div>
+        <div *ngIf="loadedUsers.length != 0" class="ng-options disabled">
+          {{ 'i18n.user-search.tag'}}
+        </div>
+      </ng-template>
+    </ng-select>
+  </div>
+</div>
+
+<!--{{selectedUser | json}}-->

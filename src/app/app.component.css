@@ -1,0 +1,13 @@
+input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: darkgrey;
+  font-size: 14px;
+}
+input:focus {
+  border-color: green;
+}
+
+label{
+  font-size: 14px;
+}

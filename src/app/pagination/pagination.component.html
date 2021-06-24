@@ -1,0 +1,13 @@
+<div>
+  <span class="float-left">
+   <button type="button" class="btn btn-outline-dark" (click)="decreaseDate()"><i class="fa fa-arrow-left" size="5px"></i></button>&nbsp;
+   <button type="button" class="btn btn-outline-dark">Today</button>&nbsp;
+   <button type="button" class="btn btn-outline-dark" (click)="increaseDate()"><i class="fa fa-arrow-right"></i></button>
+  </span>
+  <span style="font-size: 30px;">DevOps - {{currentDate | date : 'MMM yyyy'}}</span>
+  <span class="float-right">
+    <button type="button" class="btn btn-outline-dark" routerLink="calendar">Calendar View</button>&nbsp;
+    <button type="button" class="btn btn-outline-dark" routerLink="month-effort" >Monthly Efforts</button>&nbsp;
+    <button type="button" class="btn btn-outline-dark" routerLink="calendar">Export</button>
+  </span>
+</div>

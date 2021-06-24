@@ -1,0 +1,10 @@
+.ng-select.custom ::ng-deep  {
+  min-height: 0px;
+  border-radius: 0;
+  font-size: 10px;
+}
+
+.ng-select.custom .ng-control  {
+  min-height: 0px;
+  border-radius: 10px;
+}
